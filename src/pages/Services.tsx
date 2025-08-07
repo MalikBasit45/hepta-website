@@ -1,3 +1,6 @@
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+
 const Services = () => {
   const services = [
     {
@@ -75,9 +78,21 @@ const Services = () => {
   };
 
   return (
-    <div className="min-h-screen py-20">
+    <>
+      <Helmet>
+        <title>Our Services | Hepta - Web Development & Digital Solutions</title>
+        <meta name="description" content="Comprehensive digital services including web development, UI/UX design, mobile apps, e-commerce solutions, SEO, and technology consulting." />
+        <meta name="keywords" content="web development, UI/UX design, mobile development, e-commerce, SEO, digital marketing, technology consulting" />
+        <link rel="canonical" href="https://hepta-website.com/services" />
+      </Helmet>
+      
+      <div className="min-h-screen py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          className="text-center mb-16"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Our Services
           </h1>
@@ -89,7 +104,12 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-lg transition-shadow">
+            <div 
+              key={index} 
+              className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-lg transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay={200 + (index * 100)}
+            >
               <div className={`w-16 h-16 ${getColorClasses(service.color)} rounded-lg flex items-center justify-center mb-6`}>
                 {service.icon}
               </div>
@@ -99,26 +119,31 @@ const Services = () => {
               <p className="text-slate-600 mb-6">
                 {service.description}
               </p>
-              <button className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+              <Link to={`/services/${service.title.toLowerCase().replace(/\s+/g, '').replace(/[&]/g, '')}`} className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
                 Learn More →
-              </button>
+              </Link>
             </div>
           ))}
         </div>
 
-        <div className="mt-20 text-center">
+        <div 
+          className="mt-20 text-center"
+          data-aos="fade-up"
+          data-aos-delay="800"
+        >
           <h2 className="text-3xl font-bold text-slate-900 mb-6">
             Ready to Get Started?
           </h2>
           <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
             Let's discuss how we can help bring your vision to life and drive real results for your business.
           </p>
-          <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+          <Link to="/contact" className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
             Get a Free Consultation
-          </button>
+          </Link>
         </div>
       </div>
     </div>
+    </>
   );
 };
 

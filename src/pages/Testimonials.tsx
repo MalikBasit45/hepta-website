@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async';
+
 const Testimonials = () => {
   const testimonials = [
     {
@@ -58,9 +60,21 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="min-h-screen py-20">
+    <>
+      <Helmet>
+        <title>Client Testimonials | Hepta - What Our Clients Say</title>
+        <meta name="description" content="Read what our clients have to say about working with Hepta. See real testimonials from satisfied customers about our web development and digital solutions." />
+        <meta name="keywords" content="client testimonials, customer reviews, Hepta reviews, web development testimonials" />
+        <link rel="canonical" href="https://hepta-website.com/testimonials" />
+      </Helmet>
+      
+      <div className="min-h-screen py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          className="text-center mb-16"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Client Testimonials
           </h1>
@@ -72,12 +86,18 @@ const Testimonials = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-lg transition-shadow">
+            <div 
+              key={index} 
+              className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-lg transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay={200 + (index * 100)}
+            >
               <div className="flex items-center mb-6">
                 <img 
                   src={testimonial.avatar} 
-                  alt={testimonial.name}
+                  alt={`${testimonial.name} - ${testimonial.position}`}
                   className="w-12 h-12 rounded-full object-cover mr-4"
+                  loading="lazy"
                 />
                 <div>
                   <h3 className="font-semibold text-slate-900">{testimonial.name}</h3>
@@ -96,7 +116,11 @@ const Testimonials = () => {
           ))}
         </div>
 
-        <div className="mt-20 text-center">
+        <div 
+          className="mt-20 text-center"
+          data-aos="fade-up"
+          data-aos-delay="800"
+        >
           <h2 className="text-3xl font-bold text-slate-900 mb-6">
             Join Our Happy Clients
           </h2>
@@ -110,6 +134,7 @@ const Testimonials = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,3 +1,6 @@
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+
 const Blog = () => {
   const blogPosts = [
     {
@@ -57,9 +60,21 @@ const Blog = () => {
   ];
 
   return (
-    <div className="min-h-screen py-20">
+    <>
+      <Helmet>
+        <title>Blog | Hepta - Web Development Insights & Tips</title>
+        <meta name="description" content="Stay updated with the latest insights, trends, and best practices in web development, design, and digital marketing from Hepta's expert team." />
+        <meta name="keywords" content="web development blog, design tips, digital marketing insights, technology trends" />
+        <link rel="canonical" href="https://hepta-website.com/blog" />
+      </Helmet>
+      
+      <div className="min-h-screen py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          className="text-center mb-16"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Our Blog
           </h1>
@@ -71,12 +86,18 @@ const Blog = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
-            <article key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+            <article 
+              key={index} 
+              className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay={200 + (index * 100)}
+            >
               <div className="relative">
                 <img 
                   src={post.image} 
-                  alt={post.title}
+                  alt={`${post.title} - ${post.category} blog post`}
                   className="w-full h-48 object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
@@ -98,15 +119,25 @@ const Blog = () => {
                 <p className="text-slate-600 mb-4 line-clamp-3">
                   {post.excerpt}
                 </p>
-                <button className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                  Read More →
-                </button>
+                      {index < 6 ? (
+        <Link to={`/blog/blog${index + 1}`} className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+          Read More →
+        </Link>
+      ) : (
+        <button className="text-blue-600 font-semibold hover:text-blue-700 transition-colors" disabled>
+          Read More →
+        </button>
+      )}
               </div>
             </article>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <div 
+          className="mt-16 text-center"
+          data-aos="fade-up"
+          data-aos-delay="800"
+        >
           <div className="flex justify-center space-x-4">
             <button className="px-4 py-2 border border-gray-300 text-slate-700 rounded-lg hover:bg-gray-50 transition-colors">
               Previous
@@ -126,7 +157,11 @@ const Blog = () => {
           </div>
         </div>
 
-        <div className="mt-20 text-center">
+        <div 
+          className="mt-20 text-center"
+          data-aos="fade-up"
+          data-aos-delay="900"
+        >
           <h2 className="text-3xl font-bold text-slate-900 mb-6">
             Subscribe to Our Newsletter
           </h2>
@@ -146,6 +181,7 @@ const Blog = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

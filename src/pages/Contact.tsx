@@ -1,8 +1,22 @@
+import { Helmet } from 'react-helmet-async';
+
 const Contact = () => {
   return (
-    <div className="min-h-screen py-20">
+    <>
+      <Helmet>
+        <title>Contact Us | Hepta - Get in Touch</title>
+        <meta name="description" content="Ready to start your next project? Contact Hepta for web development, design, and digital solutions. Get a free consultation today." />
+        <meta name="keywords" content="contact Hepta, web development contact, digital agency contact, free consultation" />
+        <link rel="canonical" href="https://hepta-website.com/contact" />
+      </Helmet>
+      
+      <div className="min-h-screen py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          className="text-center mb-16"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Get in Touch
           </h1>
@@ -14,7 +28,11 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+          <div 
+            className="bg-white rounded-xl shadow-sm border border-gray-100 p-8"
+            data-aos="fade-left"
+            data-aos-delay="200"
+          >
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h2>
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -112,7 +130,11 @@ const Contact = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div 
+            className="space-y-8"
+            data-aos="fade-right"
+            data-aos-delay="300"
+          >
             <div>
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Contact Information</h2>
               <div className="space-y-6">
@@ -183,6 +205,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,8 +1,22 @@
+import { Helmet } from 'react-helmet-async';
+
 const About = () => {
   return (
-    <div className="min-h-screen py-20">
+    <>
+      <Helmet>
+        <title>About Us | Hepta - Digital Agency</title>
+        <meta name="description" content="Learn about Hepta's story, our passionate team of designers and developers, and over 10 years of experience creating exceptional digital experiences." />
+        <meta name="keywords" content="about Hepta, digital agency, web development team, designers, developers" />
+        <link rel="canonical" href="https://hepta-website.com/about" />
+      </Helmet>
+      
+      <div className="min-h-screen py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          className="text-center mb-16"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             About Hepta
           </h1>
@@ -13,7 +27,10 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-          <div>
+          <div
+            data-aos="fade-left"
+            data-aos-delay="200"
+          >
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Story</h2>
             <p className="text-slate-600 mb-4">
               Founded with a vision to bridge the gap between creativity and technology, Hepta has been 
@@ -30,7 +47,11 @@ const About = () => {
               their digital presence and achieve their goals.
             </p>
           </div>
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8">
+          <div 
+            className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8"
+            data-aos="fade-right"
+            data-aos-delay="300"
+          >
             <div className="text-center">
               <div className="w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,7 +67,11 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center p-6">
+          <div 
+            className="text-center p-6"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl font-bold text-green-600">10+</span>
             </div>
@@ -56,7 +81,11 @@ const About = () => {
             </p>
           </div>
 
-          <div className="text-center p-6">
+          <div 
+            className="text-center p-6"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
             <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl font-bold text-blue-600">200+</span>
             </div>
@@ -66,7 +95,11 @@ const About = () => {
             </p>
           </div>
 
-          <div className="text-center p-6">
+          <div 
+            className="text-center p-6"
+            data-aos="fade-up"
+            data-aos-delay="600"
+          >
             <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl font-bold text-purple-600">50+</span>
             </div>
@@ -78,6 +111,7 @@ const About = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

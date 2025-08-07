@@ -2,7 +2,11 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 overflow-hidden">
+    <section 
+      className="relative min-h-[85vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 overflow-hidden"
+      aria-labelledby="hero-heading"
+      role="banner"
+    >
       {/* Background Pattern Overlay */}
       <div className="absolute inset-0 bg-black/20"></div>
       
@@ -17,7 +21,12 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-6 md:px-12">
         <div className="text-center md:text-left max-w-4xl mx-auto md:mx-0">
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+          <h1 
+            id="hero-heading"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             We Build{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
               Beautiful
@@ -26,13 +35,21 @@ const Hero = () => {
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+          <p 
+            className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto md:mx-0 leading-relaxed"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             Transform your business with cutting-edge web solutions that combine 
             stunning design, powerful functionality, and exceptional user experiences.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <div 
+            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             <Link
               to="/contact"
               className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg inline-flex items-center justify-center"
@@ -58,7 +75,11 @@ const Hero = () => {
           </div>
 
           {/* Trust Indicators */}
-          <div className="mt-12 pt-8 border-t border-white/10">
+          <div 
+            className="mt-12 pt-8 border-t border-white/10"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
             <p className="text-slate-400 text-sm mb-4">Trusted by leading companies worldwide</p>
             <div className="flex flex-wrap justify-center md:justify-start gap-8 opacity-60">
               <div className="text-white/70 font-semibold">TechCorp</div>
@@ -71,7 +92,11 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div 
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+        data-aos="fade-up"
+        data-aos-delay="500"
+      >
         <div className="flex flex-col items-center text-white/70">
           <span className="text-sm mb-2">Scroll to explore</span>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

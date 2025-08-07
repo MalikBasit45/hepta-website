@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async';
+
 const Portfolio = () => {
   const projects = [
     {
@@ -45,9 +47,21 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen py-20">
+    <>
+      <Helmet>
+        <title>Our Portfolio | Hepta - Web Development Projects</title>
+        <meta name="description" content="Explore our latest web development, mobile app, and design projects. See how we've helped businesses achieve their goals through innovative digital solutions." />
+        <meta name="keywords" content="portfolio, web development projects, mobile apps, UI/UX design, case studies" />
+        <link rel="canonical" href="https://hepta-website.com/portfolio" />
+      </Helmet>
+      
+      <div className="min-h-screen py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          className="text-center mb-16"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Our Portfolio
           </h1>
@@ -59,12 +73,18 @@ const Portfolio = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+            <div 
+              key={index} 
+              className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow"
+              data-aos="fade-up"
+              data-aos-delay={200 + (index * 100)}
+            >
               <div className="relative">
                 <img 
                   src={project.image} 
-                  alt={project.title}
+                  alt={`${project.title} - ${project.category} project`}
                   className="w-full h-48 object-cover"
+                  loading="lazy"
                 />
                 <div className="absolute top-4 left-4">
                   <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
@@ -97,7 +117,11 @@ const Portfolio = () => {
           ))}
         </div>
 
-        <div className="mt-20 text-center">
+        <div 
+          className="mt-20 text-center"
+          data-aos="fade-up"
+          data-aos-delay="800"
+        >
           <h2 className="text-3xl font-bold text-slate-900 mb-6">
             Ready to Start Your Project?
           </h2>
@@ -110,6 +134,7 @@ const Portfolio = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
