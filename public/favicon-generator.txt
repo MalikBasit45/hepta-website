@@ -1,0 +1,25 @@
+FAVICON GENERATION INSTRUCTIONS
+================================
+
+To create PNG favicon files from the SVG:
+
+1. Use an online SVG to PNG converter (like convertio.co, cloudconvert.com)
+2. Convert the favicon.svg to PNG in these sizes:
+   - 16x16 px
+   - 32x32 px
+   - 48x48 px
+   - 180x180 px (for Apple touch icon)
+
+3. Save them as:
+   - favicon-16x16.png
+   - favicon-32x32.png
+   - favicon-48x48.png
+   - apple-touch-icon.png
+
+4. Create an ICO file containing multiple sizes (16x16, 32x32, 48x48)
+
+Alternative: Use a favicon generator like favicon.io or realfavicongenerator.net
+with the favicon.svg file to generate all required formats automatically.
+
+The SVG favicon is already properly linked in index.html and will work
+in modern browsers. PNG versions are for better compatibility. 
