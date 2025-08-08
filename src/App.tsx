@@ -24,6 +24,12 @@ import MobileDevelopment from './pages/services/MobileDevelopment';
 import EcommerceSolutions from './pages/services/EcommerceSolutions';
 import SEOMarketing from './pages/services/SEOMarketing';
 import Consulting from './pages/services/Consulting';
+import EcommercePlatform from './pages/projects/EcommercePlatform';
+import MobileBankingApp from './pages/projects/MobileBankingApp';
+import CorporateWebsite from './pages/projects/CorporateWebsite';
+import SaaSDashboard from './pages/projects/SaaSDashboard';
+import RestaurantApp from './pages/projects/RestaurantApp';
+import PortfolioWebsite from './pages/projects/PortfolioWebsite';
 
 function App() {
   useEffect(() => {
@@ -61,6 +67,12 @@ function App() {
   <Route path="/services/ecommercesolutions" element={<EcommerceSolutions />} />
   <Route path="/services/seomarketing" element={<SEOMarketing />} />
   <Route path="/services/consulting" element={<Consulting />} />
+  <Route path="/projects/ecommerceplatform" element={<EcommercePlatform />} />
+  <Route path="/projects/mobilebankingapp" element={<MobileBankingApp />} />
+  <Route path="/projects/corporatewebsite" element={<CorporateWebsite />} />
+  <Route path="/projects/saasdashboard" element={<SaaSDashboard />} />
+  <Route path="/projects/restaurantapp" element={<RestaurantApp />} />
+  <Route path="/projects/portfoliowebsite" element={<PortfolioWebsite />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

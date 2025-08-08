@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const Portfolio = () => {
   const projects = [
@@ -109,9 +110,9 @@ const Portfolio = () => {
                     </span>
                   ))}
                 </div>
-                <button className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                <Link to={`/projects/${project.title.toLowerCase().replace(/\s+/g, '').replace(/[&]/g, '')}`} className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
                   View Project →
-                </button>
+                </Link>
               </div>
             </div>
           ))}
@@ -128,9 +129,9 @@ const Portfolio = () => {
           <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
             Let's create something amazing together. Get in touch to discuss your project requirements.
           </p>
-          <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+          <Link to="/contact" className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
             Start Your Project
-          </button>
+          </Link>
         </div>
       </div>
     </div>
