@@ -335,8 +335,8 @@ const Home = () => {
             </motion.p>
           </div>
           
-          <div className="relative">
-            <div className="flex overflow-hidden">
+          <div className="relative min-h-[560px]">
+            <div className="relative h-full">
               {featuredHotels.map((hotel, index) => (
                 <motion.div
                   key={hotel.id}
@@ -346,7 +346,7 @@ const Home = () => {
                     scale: currentHotel === index ? 1 : 0.9
                   }}
                   transition={{ duration: 0.5 }}
-                  className="w-full flex-shrink-0"
+                  className={`absolute inset-0 w-full ${currentHotel === index ? 'pointer-events-auto' : 'pointer-events-none'}`}
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <div className="lg:col-span-2">
@@ -360,7 +360,7 @@ const Home = () => {
                       <h3 className="text-3xl font-bold text-gray-800">{hotel.name}</h3>
                       <p className="text-xl text-gray-600">{hotel.location}</p>
                       <p className="text-2xl font-semibold text-blue-600">{hotel.price}</p>
-                      <Link to={`/hotels/${hotel.id}`}>
+                      <Link to="/hotels">
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
