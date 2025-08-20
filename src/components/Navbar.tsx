@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   // Handle scroll effect for navbar background
   useEffect(() => {
@@ -30,6 +31,9 @@ const Navbar = () => {
     { path: '/contact', label: 'Contact' },
   ];
 
+  const isHomeRoute = location.pathname === '/';
+  const isTransparent = isHomeRoute && !isScrolled && !isMobileMenuOpen;
+
   return (
     <>
       {/* Main Navbar */}
@@ -38,9 +42,9 @@ const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-gray-900 shadow-lg' 
-            : 'bg-transparent'
+          isTransparent
+            ? 'bg-transparent'
+            : 'bg-white/90 shadow-lg backdrop-blur-md'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,56 +56,44 @@ const Navbar = () => {
             >
               <NavLink 
                 to="/" 
-                className="text-3xl font-bold text-white hover:text-blue-400 transition-colors duration-300"
+                className={`text-3xl font-bold transition-colors duration-300 ${
+                  isTransparent ? 'text-white hover:text-blue-400' : 'text-gray-900 hover:text-blue-600'
+                }`}
                 onClick={handleLinkClick}
               >
                 Hepta
               </NavLink>
             </motion.div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
-              {navLinks.map((link) => (
-                <NavLink
-                  key={link.path}
-                  to={link.path}
-                  className={({ isActive }) =>
-                    `px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
-                      isActive
-                        ? 'text-blue-400 bg-blue-900/20 border-b-2 border-blue-400'
-                        : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
-                    }`
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              ))}
-            </div>
+            {/* Desktop Navigation hidden - use hamburger across all sizes */}
+            <div className="hidden"></div>
 
-            {/* Mobile Menu Button */}
-            <div className="lg:hidden">
+            {/* Unified Menu Button (all breakpoints) */}
+            <div>
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-white p-2 rounded-md hover:bg-gray-800/50 transition-colors duration-300"
+                className={`p-2 rounded-md transition-colors duration-300 ${
+                  isTransparent ? 'text-white hover:bg-white/10' : 'text-gray-800 hover:bg-gray-100'
+                }`}
                 aria-label="Toggle mobile menu"
               >
                 <div className="w-6 h-6 flex flex-col justify-center items-center">
                   <motion.span
                     animate={isMobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="w-6 h-0.5 bg-white block mb-1"
+                    className={`w-6 h-0.5 block mb-1 ${isTransparent ? 'bg-white' : 'bg-gray-800'}`}
                   />
                   <motion.span
                     animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
                     transition={{ duration: 0.3 }}
-                    className="w-6 h-0.5 bg-white block mb-1"
+                    className={`w-6 h-0.5 block mb-1 ${isTransparent ? 'bg-white' : 'bg-gray-800'}`}
                   />
                   <motion.span
                     animate={isMobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="w-6 h-0.5 bg-white block"
+                    className={`w-6 h-0.5 block ${isTransparent ? 'bg-white' : 'bg-gray-800'}`}
                   />
                 </div>
               </motion.button>
@@ -110,7 +102,7 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
@@ -120,11 +112,11 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+              className="fixed inset-0 bg-black/50 z-40"
               onClick={() => setIsMobileMenuOpen(false)}
             />
 
-            {/* Mobile Menu */}
+            {/* Slide-in Menu */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -134,7 +126,7 @@ const Navbar = () => {
                 damping: 25, 
                 stiffness: 200 
               }}
-              className="fixed top-0 right-0 h-full w-80 bg-gray-900 z-50 lg:hidden shadow-2xl"
+              className="fixed top-0 right-0 h-full w-80 bg-gray-900 z-50 shadow-2xl"
             >
               {/* Mobile Menu Header */}
               <div className="flex justify-between items-center p-6 border-b border-gray-700">
@@ -152,7 +144,7 @@ const Navbar = () => {
                 </motion.button>
               </div>
 
-              {/* Mobile Navigation Links */}
+              {/* Navigation Links */}
               <div className="p-6">
                 <nav className="space-y-4">
                   {navLinks.map((link, index) => (
